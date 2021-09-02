@@ -1,0 +1,24 @@
+version: "3"
+services:
+  db:
+    image: postgres:12-alpine
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    container_name: scala-demo-db
+    volumes:
+      - "./db-init.sql:/docker-entrypoint-initdb.d/init.sql"
+  be:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    container_name: scala-demo-be
+    depends_on:
+      - db
+    environment:
+      - "DATABASE_HOST=db"
+      - "DATABASE_PORT=5432"
+      - "DATABASE_PASSWORD=${POSTGRES_PASSWORD}"
