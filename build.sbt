@@ -1,6 +1,6 @@
 val ZioVersion = "1.0.9"
 val TapirVersion = "0.17.20"
-val DoobieVersion = "0.12.1"
+val DoobieVersion = "0.13.4"
 val MunitVersion = "0.7.20"
 val MunitCatsEffectVersion = "0.13.0"
 val LogbackVersion = "1.2.3"
@@ -23,6 +23,8 @@ lazy val root = (project in file("."))
       "com.softwaremill.sttp.tapir" %% "tapir-swagger-ui-http4s"  % TapirVersion,
       "com.softwaremill.sttp.tapir" %% "tapir-openapi-docs"       % TapirVersion,
       "com.softwaremill.sttp.tapir" %% "tapir-openapi-circe-yaml" % TapirVersion,
+      "org.tpolecat"                %% "doobie-core"              % DoobieVersion,
+      "org.tpolecat"                %% "doobie-postgres"          % DoobieVersion,
       "org.scalameta"               %% "munit"                    % MunitVersion           % Test,
       "org.typelevel"               %% "munit-cats-effect-2"      % MunitCatsEffectVersion % Test,
       "ch.qos.logback"              %  "logback-classic"          % LogbackVersion,
